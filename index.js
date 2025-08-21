@@ -1,4 +1,3 @@
-// Datos
 const products = [
   { name: "Air Max 1", brand: "Nike", price: 120, image: "./assets/nike1.png"},
   { name: "NB 9060", brand: "New Balance", price: 80, image: "./assets/NB1.png" },
@@ -14,7 +13,7 @@ const products = [
   { name: "Adidas SL72 OG", brand: "Adidas", price: 45, image: "./assets/adidas4.png" },
 ];
 
-// Estado
+
 const state = {
   filters: {
     brand: "",
@@ -23,20 +22,20 @@ const state = {
   filtered: products
 };
 
-// Referencias globales (se asignan en init)
+
 let app, productsContainer, overlay, modal;
 let brandSelect, priceInput, form, clearBtn, closeBtn;
 
-// ––––– Inyección de Layout y Modal –––––
+
 function renderLayout() {
   app = document.getElementById("app");
 
-  // Contenedor de productos
+
   productsContainer = document.createElement("div");
   productsContainer.id = "products";
   app.appendChild(productsContainer);
 
-  // Overlay y modal (vacío antes: no estaba en el HTML)
+  // Overlay y modal
   overlay = document.createElement("div");
   overlay.id = "overlay";
   document.body.appendChild(overlay);
@@ -67,7 +66,7 @@ function renderLayout() {
   `;
   document.body.appendChild(modal);
 
-  // Rellenar marcas únicas desde datos
+
   brandSelect = modal.querySelector("#brandFilter");
   [...new Set(products.map(p => p.brand))].sort().forEach(brand => {
     const opt = document.createElement("option");
@@ -76,7 +75,7 @@ function renderLayout() {
     brandSelect.appendChild(opt);
   });
 
-  // refs de formulario
+
   form = modal.querySelector("#filterForm");
   priceInput = modal.querySelector("#priceFilter");
   clearBtn = modal.querySelector("#clearFilters");
@@ -85,7 +84,7 @@ function renderLayout() {
 
 function openModal() {
   document.body.classList.add("is-open");
-  // enfoque inicial
+
   if (brandSelect) brandSelect.focus();
 }
 
@@ -93,7 +92,7 @@ function closeModal() {
   document.body.classList.remove("is-open");
 }
 
-// ––––– Render de productos –––––
+
 function renderProducts(list) {
   productsContainer.textContent = "";
 
@@ -108,7 +107,7 @@ function renderProducts(list) {
       .slice(0, 3);
     list = suggestions;
   } else {
-    // si había mensaje previo de vacío, eliminarlo
+
     const prevMsg = app.querySelector(".empty-msg");
     if (prevMsg) prevMsg.remove();
   }
@@ -144,7 +143,7 @@ function renderProducts(list) {
   productsContainer.append(frag);
 }
 
-// ––––– Filtrado –––––
+// ––––– Filtro –––––
 function getFilteredProducts() {
   const { brand, maxPrice } = state.filters;
   const max = parseFloat(maxPrice);
@@ -158,22 +157,19 @@ function getFilteredProducts() {
 
 // ––––– Eventos –––––
 function attachEvents() {
-  // Botón del header para abrir modal
+
   const toggle = document.getElementById("filterToggle");
   toggle.addEventListener("click", openModal);
 
-  // Overlay cierra modal
   overlay.addEventListener("click", closeModal);
 
-  // Botón cerrar
   closeBtn.addEventListener("click", closeModal);
 
-  // Escape cierra modal
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape") closeModal();
   });
 
-  // Submit filtros
+
   form.addEventListener("submit", (e) => {
     e.preventDefault();
     state.filters.brand = brandSelect.value;
@@ -183,7 +179,6 @@ function attachEvents() {
     closeModal();
   });
 
-  // Limpiar filtros
   clearBtn.addEventListener("click", () => {
     brandSelect.value = "";
     priceInput.value = "";
@@ -193,7 +188,7 @@ function attachEvents() {
   });
 }
 
-// ––––– Inicio –––––
+
 function init() {
   renderLayout();
   attachEvents();
