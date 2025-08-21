@@ -1,38 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Product Filter</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tienda de Zapatillas</title>
+  <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
   <header>
     <h1>Tienda de Zapatillas</h1>
-    <button id="filterToggle">Filtrar Productos</button>
+    <button id="filterToggle" type="button">Filtrar Productos</button>
   </header>
-  <main>
-    <div id="productsContainer"></div>
-    <div id="filterModal" class="hidden">
-      <form id="filterForm">
-        <label for="brandFilter">Marca:</label>
-        <select id="brandFilter">
-          <option value="">Todas</option>
-          <option value="Nike">Nike</option>
-          <option value="Adidas">Adidas</option>
-          <option value="New Balance">New Balance</option>
-        </select>
-        <label for="priceFilter">Precio máximo:</label>
-        <input type="number" id="priceFilter" placeholder="Ej: 100">
-        <button type="submit">Aplicar Filtros</button>
-        <button type="button" id="clearFilters">Limpiar Filtros</button>
-        <button type="button" id="closeModal">Cerrar</button>
-      </form>
-    </div>
-  </main>
+
+  <main id="app"></main>
+
   <footer>
     <p>&copy; 2025 Tienda de Zapatillas</p>
   </footer>
-  <script src="index.js"></script>
+
+  <script src="index.js" defer></script>
 </body>
 </html>
