@@ -1,4 +1,3 @@
-/* Base */
 * { box-sizing: border-box; }
 body {
   margin: 0;
@@ -34,7 +33,7 @@ main {
   margin: 0 auto;
 }
 
-/* Grid de productos */
+
 #products {
   display: grid;
   gap: 1rem;
@@ -60,13 +59,12 @@ main {
   font-weight: 600;
 }
 
-/* Estado vacío / sugerencias */
+
 .empty-msg {
   margin: 0 0 0.5rem 0;
   font-weight: 600;
 }
 
-/* Modal + overlay (controlado por clase, no por JS inline) */
 #overlay {
   position: fixed;
   inset: 0;
@@ -106,7 +104,6 @@ main {
   display: flex;
 }
 
-/* Media queries suaves */
 @media (min-width: 768px) {
   main { padding: 1.5rem; }
 }
